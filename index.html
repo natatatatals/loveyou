@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Amor Isabella</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #fffafc, #e0f7fa);
+      font-family: 'Quicksand', sans-serif;
+      color: #4a3e4e;
+      border: 12px double #ffcce5;
+      padding: 10px;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(45deg, rgba(255,192,203,0.3), rgba(173,216,230,0.3) 10px);
+      z-index: -1;
+      animation: lights 4s linear infinite;
+    }
+    @keyframes lights {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+    .ribbon, .top-banner {
+      background: url('https://png.pngtree.com/png-clipart/20210308/original/pngtree-cute-pink-bow-png-image_5870144.jpg') no-repeat center;
+      background-size: contain;
+      height: 80px;
+      width: 100px;
+      margin: 10px auto 0 auto;
+    }
+    .navbar {
+      background-color: #ffd6ec;
+      border-bottom: 3px solid #b2ebf2;
+      box-shadow: 0 0 12px #ffaacc;
+    }
+    .navbar-brand, .nav-link {
+      font-weight: bold;
+      color: #fff !important;
+      text-shadow: 0 0 2px #ff80ab;
+    }
+    .login-screen {
+      background: linear-gradient(to bottom right, #fff0f5, #e1f5fe);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-box {
+      background-color: white;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+      text-align: center;
+    }
+    .login-box h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: #ff66a3;
+    }
+    .section {
+      display: none;
+      padding: 2rem;
+    }
+    .active-section {
+      display: block;
+    }
+    .gif-box img {
+      border-radius: 20px;
+      box-shadow: 0 0 15px #ff99cc;
+      max-width: 100%;
+    }
+    .chart-container {
+      width: 90%;
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+    .music-box {
+      text-align: center;
+      margin: 2rem auto;
+    }
+    .music-box audio {
+      width: 100%;
+      max-width: 300px;
+    }
+    .carousel-caption h5 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 150px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ffcce0;
+    }
+    .led-border {
+      box-shadow: 0 0 20px 5px #ff80ab, 0 0 30px 10px #80d8ff, 0 0 40px 15px #ff80ab;
+    }
+  </style>
+</head>
+<body class="led-border">
+
+<div class="top-banner"></div>
+
+<!-- Login -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <h2 class="mb-4">Bienvenida Isabella</h2>
+    <form id="loginForm">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="username" placeholder="Usuario" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+      </div>
+      <button type="submit" class="btn btn-pink w-100" style="background-color:#ff99cc; border:none; color:white; font-weight:bold;">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div id="mainContent" style="display:none;">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">My Only Love 💖</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('inicio')">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('cosas')">100 Cosas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('enamore')">Me Enamoré</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('amo')">Acepto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="inicio" class="section active-section">
+    <div class="text-center">
+      <h2 class="mt-4">Isabella, este rinconcito web es solo para ti 💘</h2>
+      <p style="max-width: 700px; margin: 1rem auto; background-color: #fff0f5; padding: 1rem; border-radius: 12px;">Aquí encontrarás todo lo que me inspiras. Desde razones por las que te amo, hasta pequeños detalles que quiero que recuerdes siempre. Gracias por ser tú.</p>
+      <div class="chart-container">
+        <canvas id="loveChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div id="cosas" class="section">
+    <h2 class="text-center">100 Cosas Que Amo de Ti</h2>
+    <ul style="max-width: 700px; margin: auto; padding-left: 1.5rem; columns: 2; column-gap: 2rem;">
+    <li>Tu risa contagiosa</li>
+    <li>Cómo me miras</li>
+    <li>Que siempre crees en mí</li>
+    <li>Tu forma de soñar</li>
+    <li>Tus ideas creativas</li>
+    <li>La manera en que ves el mundo</li>
+    <li>Tu pasión por lo que amas</li>
+    <li>Cómo te emocionas por cosas pequeñas</li>
+    <li>Tus gustos únicos</li>
+    <li>Tu forma de hablar de lo que te gusta</li>
+    <li>Tu forma de expresarte</li>
+    <li>Tu sentido del humor</li>
+    <li>La manera en que te esfuerzas</li>
+    <li>Tu forma de resolver problemas</li>
+    <li>Cómo ayudas a los demás</li>
+    <li>Tu inteligencia emocional</li>
+    <li>Tu ética de trabajo</li>
+    <li>La forma en que compartes lo que sabes</li>
+    <li>Tu amor por aprender</li>
+    <li>Tu paciencia</li>
+    <li>Tu energía positiva</li>
+    <li>Tu autenticidad</li>
+    <li>Tu forma de escuchar</li>
+    <li>Tu sinceridad</li>
+    <li>Tu fortaleza en momentos difíciles</li>
+    <li>Tu creatividad sin límites</li>
+    <li>Tu forma de inspirar</li>
+    <li>Tus reflexiones profundas</li>
+    <li>Tus valores firmes</li>
+    <li>Tu estilo personal</li>
+    <li>Cómo respetas a los demás</li>
+    <li>Tu atención a los detalles</li>
+    <li>Tu sentido de justicia</li>
+    <li>Tu lealtad</li>
+    <li>Tu forma de mantener la calma</li>
+    <li>Cómo haces sentir bien a los demás</li>
+    <li>Tu amor por lo que haces</li>
+    <li>Tu forma de organizarte</li>
+    <li>Tu mentalidad positiva</li>
+    <li>Cómo celebras lo bueno</li>
+    <li>Tu mirada curiosa</li>
+    <li>Tu habilidad para encontrar belleza en lo simple</li>
+    <li>Tu manera de narrar historias</li>
+    <li>Tu forma de motivarte</li>
+    <li>Cómo afrontas los retos</li>
+    <li>Tu capacidad de adaptarte</li>
+    <li>Tu constancia</li>
+    <li>Tu forma de aprender de todo</li>
+    <li>Tu imaginación</li>
+    <li>Tus planes para el futuro</li>
+    <li>Tus pequeñas obsesiones lindas</li>
+    <li>Tu forma de apreciar el arte</li>
+    <li>Tu forma de disfrutar la música</li>
+    <li>Tus playlists</li>
+    <li>Tu amor por la naturaleza</li>
+    <li>Tu dulzura al hablar</li>
+    <li>Tus frases únicas</li>
+    <li>Tus colores favoritos</li>
+    <li>Tu forma de pensar</li>
+    <li>Tu esencia</li>
+    <li>Tu forma de mirar el cielo</li>
+    <li>Tu conexión con el arte</li>
+    <li>Tus opiniones sinceras</li>
+    <li>Tu manera de cuidar lo que amas</li>
+    <li>Tu entusiasmo cuando hablas de tus sueños</li>
+    <li>Tu forma de inspirar sin darte cuenta</li>
+    <li>Cómo te apasiona lo que haces</li>
+    <li>Tu forma de vivir el presente</li>
+    <li>Tus contradicciones encantadoras</li>
+    <li>Tu forma de aprender de tus errores</li>
+    <li>Tu deseo constante de mejorar</li>
+    <li>Tu forma de cuidar tus emociones</li>
+    <li>Tu forma de organizar tu espacio</li>
+    <li>Cómo decoras las cosas</li>
+    <li>Tu creatividad estética</li>
+    <li>Tu voz cuando hablas de algo que te gusta</li>
+    <li>Tu manera de expresarte con palabras</li>
+    <li>Tu forma de mirar el arte</li>
+    <li>Tu forma de apoyar sin juzgar</li>
+    <li>Tu forma de elegir lo que amas</li>
+    <li>Tu forma de respetarte a ti misma</li>
+    <li>Tu capacidad de imaginar mundos nuevos</li>
+    <li>Tu forma de ver lo bueno en lo malo</li>
+    <li>Tus silencios llenos de significado</li>
+    <li>Tus momentos de introspección</li>
+    <li>Tus elecciones valientes</li>
+    <li>Tu forma de dar espacio</li>
+    <li>Tu capacidad de comunicar sin hablar</li>
+    <li>Tu aura</li>
+    <li>Tu forma de ser sin esfuerzo</li>
+    <li>Tu respeto por los tiempos</li>
+    <li>Tu manera de vivir con intención</li>
+    <li>Tus rituales personales</li>
+    <li>Tu energía tranquila</li>
+    <li>Tu forma de disfrutar los detalles</li>
+    <li>Tu constancia en tus metas</li>
+    <li>Tu forma de ver la belleza en los demás</li>
+    <li>Tu conexión con lo auténtico</li>
+    <li>Tu esencia sin adornos</li>
+    <li>Cómo dejas huella sin darte cuenta</li>
+    </ul>
+    <div class="gallery">
+      <img src="16a1aa97-28f4-4168-ada4-af58ab7ac690.jpg">
+      <img src="𝖢𝖺𝗋𝗆𝖾𝗇 •^•.jpg">
+      <img src="descarga (7).jpg">
+    </div>
+  </div>
+
+  <div id="enamore" class="section">
+    <h2 class="text-center">Por Esto Me Enamoré</h2>
+    <p style="max-width: 700px; margin: auto; background: #fff0f5; padding: 1rem; border-radius: 12px;">Me enamoré de ti porque tienes una magia única. Porque con una sola palabra tuya, todo mi mundo cambia. Me enamoré de tu risa, de cómo llenas de luz cualquier lugar y de cómo haces que todo sea mejor cuando estás cerca.</p>
+  </div>
+
+  <div id="amo" class="section">
+    <h2 class="text-center">Y finalizando esto...</h2>
+    <ul style="max-width: 700px; margin: auto; padding-left: 1.5rem;">
+      <li>Acepto</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const loginForm = document.getElementById('loginForm');
+  const loginScreen = document.getElementById('loginScreen');
+  const mainContent = document.getElementById('mainContent');
+
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    if(user === 'Isabella' && pass === 'Acepto') {
+      loginScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+    } else {
+      alert('Usuario o contraseña incorrectos');
+    }
+  });
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active-section'));
+    document.getElementById(id).classList.add('active-section');
+  }
+
+  const ctx = document.getElementById('loveChart').getContext('2d');
+  const loveChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Mi amor por ti', 'Mi cariño por ti', 'Mi ternura contigo', 'Mi compromiso', 'Mi felicidad contigo'],
+      datasets: [{
+        label: 'Nivel',
+        data: [100, 100, 100, 100, 100],
+        backgroundColor: ['#ff99cc', '#80d8ff', '#ffc0cb', '#b2ebf2', '#ffb6c1']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 100
+        }
+      }
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+</html>
